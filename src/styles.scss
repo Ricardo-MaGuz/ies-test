@@ -1,4 +1,15 @@
-/* You can add global styles to this file, and also import other style files */
+@import "assets/scss/variables";
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body {
+    background-color: $mat-ies-blue;
+}
+
+.mat-ies-orange {
+    background-color: $mat-ies-orange;
+    color: $white;
+}
+
+.mat-ies-blue {
+    background-color: $mat-ies-blue;
+    color: $white;
+}
