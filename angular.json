@@ -28,7 +28,8 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/assets/img/logo.svg"
             ],
             "styles": [
               "src/assets/css/bootstrap.min.css",
@@ -98,7 +99,8 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/assets/img/logo.svg"
             ],
             "styles": [
               "src/assets/css/bootstrap.min.css",
