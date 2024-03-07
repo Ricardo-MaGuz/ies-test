@@ -1,0 +1,12 @@
+@import "../../../../assets/scss/variables";
+
+.nav-link {
+    font-weight: bold;
+
+}
+
+.active {
+    .nav-link {
+        color: $mat-ies-orange ;
+    }
+}
