@@ -16,7 +16,8 @@ import { authReducer } from './shared/data-access/store/auth/auth.reducer';
     BrowserModule,
     AppRoutingModule,
     StoreModule.forRoot({}, {}),
-    EffectsModule.forRoot([])
+    EffectsModule.forRoot([]),
+
   ],
   providers: [],
   bootstrap: [AppComponent]
