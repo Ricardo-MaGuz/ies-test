@@ -9,6 +9,9 @@ import { ConversionsComponent } from './conversions/conversions.component';
 import { FormComponent } from './form/form.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { NameDialogModule } from 'src/app/shared/ui/name-dialog/name-dialog.module';
+import { LayoutComponent } from '../shared/ui/layout/layout.component';
+import { MatCardModule } from '@angular/material/card';
+import { DateCalculatorComponent } from './date-calculator/date-calculator.component';
 
 
 
@@ -17,16 +20,19 @@ import { NameDialogModule } from 'src/app/shared/ui/name-dialog/name-dialog.modu
     PagesComponent,
     HomeComponent,
     ConversionsComponent,
-    FormComponent
+    DateCalculatorComponent,
+    FormComponent,
+    LayoutComponent
 
   ],
   imports: [
     CommonModule,
     PagesoutingModule,
     NavModule,
+    NameDialogModule,
     MatButtonModule,
     MatDialogModule,
-    NameDialogModule
+    MatCardModule
   ],
 })
 export class PagesModule { }
