@@ -9,29 +9,36 @@ import { PagesComponent } from './pages.component';
 const routes: Routes = [
     {
         path: '',
+        redirectTo: 'home',
+        pathMatch: 'full',
+    },
+    {
+        path: '',
         component: PagesComponent,
-        children: [{
-            path: 'conversions',
-            component: ConversionsComponent
-        },
-        {
-            path: 'form',
-            component: FormComponent
-        },
-        {
-            path: 'date-calculator',
-            component: DateCalculatorComponent
-        }
-            ,
-        {
-            path: 'home',
-            component: HomeComponent
-        },]
+        children: [
+            {
+                path: 'conversions',
+                component: ConversionsComponent,
+            },
+            {
+                path: 'form',
+                component: FormComponent,
+            },
+            {
+                path: 'date-calculator',
+                component: DateCalculatorComponent,
+            },
+            {
+                path: 'home',
+                component: HomeComponent,
+            },
+        ],
     },
     {
         path: '**',
-        redirectTo: 'home'
-    }
+        redirectTo: 'home',
+        pathMatch: 'full',
+    },
 ];
 @NgModule({
     imports: [RouterModule.forChild(routes)],

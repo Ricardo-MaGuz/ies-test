@@ -12,6 +12,7 @@ import { NameDialogModule } from 'src/app/shared/ui/name-dialog/name-dialog.modu
 import { LayoutComponent } from '../shared/ui/layout/layout.component';
 import { MatCardModule } from '@angular/material/card';
 import { DateCalculatorComponent } from './date-calculator/date-calculator.component';
+import { CambioLetrasPipe } from 'src/app/shared/pipes/cambio-letras/cambio-letras.pipe';
 
 
 
@@ -22,7 +23,8 @@ import { DateCalculatorComponent } from './date-calculator/date-calculator.compo
     ConversionsComponent,
     DateCalculatorComponent,
     FormComponent,
-    LayoutComponent
+    LayoutComponent,
+    CambioLetrasPipe
 
   ],
   imports: [
@@ -32,7 +34,7 @@ import { DateCalculatorComponent } from './date-calculator/date-calculator.compo
     NameDialogModule,
     MatButtonModule,
     MatDialogModule,
-    MatCardModule
+    MatCardModule,
   ],
 })
 export class PagesModule { }
