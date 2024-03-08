@@ -1,1 +1,18 @@
-<p>home works!</p>
+<div class="home">
+</div>
+<div class="container">
+    <div class="row justify-content-center pt-5">
+        <div class="col-10 mt-4 text-center">
+            <h1 class="hero-h1"><ng-container *ngIf="!isNamed;then general else named"></ng-container></h1>
+            <p *ngIf="!isNamed" class="home-text mb-5">¿Nos podrías indicar tu nombre?</p>
+            <button (click)="openNameDialog()" *ngIf="!isNamed" class="mat-ies-orange-stroked"
+                mat-stroked-button>Escribe tu
+                Nombre
+            </button>
+        </div>
+
+    </div>
+</div>
+
+<ng-template #general>Bievenido a <span class="accent">mi portal.</span></ng-template>
+<ng-template #named>Bievenido <span class="accent">{{name}}</span></ng-template>

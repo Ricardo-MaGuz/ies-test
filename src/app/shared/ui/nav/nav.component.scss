@@ -1,12 +1,16 @@
 @import "../../../../assets/scss/variables";
 
-.nav-link {
-    font-weight: bold;
-
+.nav-item {
+    .nav-link {
+        color: $mat-ies-blue ;
+        text-transform: uppercase;
+    }
 }
+
 
 .active {
     .nav-link {
         color: $mat-ies-orange ;
+        font-weight: bold;
     }
 }

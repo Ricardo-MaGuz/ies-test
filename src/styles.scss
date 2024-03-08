@@ -2,6 +2,7 @@
 
 body {
     background-color: $mat-ies-blue;
+    overflow: hidden;
 }
 
 .mat-ies-orange {
@@ -12,4 +13,10 @@ body {
 .mat-ies-blue {
     background-color: $mat-ies-blue;
     color: $white;
+}
+
+.mat-ies-orange:disabled {
+    background-color: $mat-ies-orange-disabled;
+    color: $white;
+    color: rgba(0, 0, 0, .26);
 }

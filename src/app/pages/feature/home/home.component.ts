@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { NameDialogComponent } from 'src/app/shared/ui/name-dialog/name-dialog.component';
 
 @Component({
   selector: 'app-home',
@@ -6,8 +8,25 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  isNamed = false
+  name = ''
 
-  constructor() { }
+
+  @ViewChild('dialogRef')
+  dialogRef!: TemplateRef<any>;
+
+  constructor(public dialog: MatDialog) { }
+
+  openNameDialog() {
+    const nameDialog = this.dialog.open(NameDialogComponent, {},);
+    nameDialog.afterClosed().subscribe((res) => {
+      this.name = res.name
+      this.isNamed = true
+      console.log(res.name)
+      // Data back from dialog
+      console.log({ res });
+    });
+  }
 
   ngOnInit(): void {
   }

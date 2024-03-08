@@ -1,0 +1,13 @@
+<form #nameForm="ngForm">
+    <h1 mat-dialog-title>¿Cuál es tu nombre?</h1>
+    <div mat-dialog-content>
+        <mat-form-field appearance="fill">
+            <mat-label>Nombre</mat-label>
+            <input focus="true" name="name" minlength="3" maxlength="20" required matInput [(ngModel)]="nameDialog">
+            <mat-error>El formato es inválido</mat-error>
+        </mat-form-field>
+    </div>
+    <div mat-dialog-actions align="end">
+        <button [disabled]="nameForm.invalid" (click)="closeDialog()" class="mat-ies-orange" mat-button>Enviar</button>
+    </div>
+</form>
