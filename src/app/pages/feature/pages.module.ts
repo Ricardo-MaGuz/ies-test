@@ -13,6 +13,12 @@ import { LayoutComponent } from '../shared/ui/layout/layout.component';
 import { MatCardModule } from '@angular/material/card';
 import { DateCalculatorComponent } from './date-calculator/date-calculator.component';
 import { CambioLetrasPipe } from 'src/app/shared/pipes/cambio-letras/cambio-letras.pipe';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+
 
 
 
@@ -35,6 +41,11 @@ import { CambioLetrasPipe } from 'src/app/shared/pipes/cambio-letras/cambio-letr
     MatButtonModule,
     MatDialogModule,
     MatCardModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    MatRadioModule,
+    MatDatepickerModule
   ],
 })
 export class PagesModule { }
