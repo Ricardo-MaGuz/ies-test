@@ -3,12 +3,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
-import { StoreModule } from '@ngrx/store';
 import { AppComponent } from './app.component';
-import { EffectsModule } from '@ngrx/effects';
-import { authReducer } from './shared/data-access/store/auth/auth.reducer';
 
-import { NameDialogComponent } from './shared/ui/name-dialog/name-dialog.component';
+
 
 
 @NgModule({
@@ -19,8 +16,7 @@ import { NameDialogComponent } from './shared/ui/name-dialog/name-dialog.compone
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    StoreModule.forRoot({}, {}),
-    EffectsModule.forRoot([]),
+
 
 
   ],
