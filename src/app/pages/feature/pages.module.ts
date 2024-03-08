@@ -7,7 +7,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { HomeComponent } from './home/home.component';
 import { ConversionsComponent } from './conversions/conversions.component';
 import { FormComponent } from './form/form.component';
-import { DateCalculatorComponent } from './date-calculator/date-calculator.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { NameDialogModule } from 'src/app/shared/ui/name-dialog/name-dialog.module';
 
 
 
@@ -16,15 +17,16 @@ import { DateCalculatorComponent } from './date-calculator/date-calculator.compo
     PagesComponent,
     HomeComponent,
     ConversionsComponent,
-    FormComponent,
-    DateCalculatorComponent
+    FormComponent
 
   ],
   imports: [
     CommonModule,
     PagesoutingModule,
     NavModule,
-    MatButtonModule
+    MatButtonModule,
+    MatDialogModule,
+    NameDialogModule
   ],
 })
 export class PagesModule { }
