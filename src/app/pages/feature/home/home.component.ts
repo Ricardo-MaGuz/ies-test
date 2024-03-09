@@ -1,4 +1,4 @@
-import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewChild, Renderer2 } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { NameDialogComponent } from 'src/app/shared/ui/name-dialog/name-dialog.component';
 
@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit {
   @ViewChild('dialogRef')
   dialogRef!: TemplateRef<any>;
 
-  constructor(public dialog: MatDialog) { }
+  constructor(public dialog: MatDialog, private renderer: Renderer2) { }
 
   openNameDialog() {
     const nameDialog = this.dialog.open(NameDialogComponent, {},);
@@ -26,6 +26,9 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.renderer.addClass(document.body, 'home');
   }
-
+  ngOnDestroy(): void {
+    this.renderer.removeClass(document.body, 'home');
+  }
 }
