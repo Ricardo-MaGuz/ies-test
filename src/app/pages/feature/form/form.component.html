@@ -1,63 +1,82 @@
 <app-layout [title]="'Form'">
-    <form class="form row">
-        <div class="form-group col-4">
-            <mat-form-field class="w-100" :appearance="fill" floatLabel="auto">
-                <mat-label>Nombre</mat-label>
-                <input matInput>
-            </mat-form-field>
-        </div>
-        <div class="form-group col-4">
-            <mat-form-field class="w-100" appearance="fill" floatLabel="auto">
-                <mat-label>Apellidos</mat-label>
-                <input matInput>
-            </mat-form-field>
-        </div>
-        <div class="form-group col-4">
-            <mat-form-field class="w-100" appearance="fill" floatLabel="auto">
-                <mat-label>Estado Civil</mat-label>
-                <mat-select>
-                    <mat-option value="12">Soltero</mat-option>
-                    <mat-option value="13">Casado</mat-option>
-                    <mat-option value="14">Divorciado</mat-option>
-                </mat-select>
-            </mat-form-field>
-        </div>
-        <div class="form-group col-4">
-            <mat-form-field class="w-100" appearance="fill" floatLabel="auto">
-                <mat-label>¿Eres fumador?</mat-label>
-                <mat-select>
-                    <mat-option value="true">Si</mat-option>
-                    <mat-option value="false">No</mat-option>
-                </mat-select>
-            </mat-form-field>
-        </div>
-        <div class="form-group col-4">
-            <mat-form-field class="w-100" appearance="fill" floatLabel="auto">
-                <mat-label>¿Actualmente practicas lectura?</mat-label>
-                <mat-select>
-                    <mat-option value="true">Si</mat-option>
-                    <mat-option value="false">No</mat-option>
-                </mat-select>
-            </mat-form-field>
-        </div>
-        <ng-container *ngIf="isReader;then reader"></ng-container>
-        <div class="col-12 text-right">
-            <button class="mat-ies-orange" mat-raised-button>Enviar</button>
-        </div>
-    </form>
+    <ng-container *ngIf="!submitted; then bookFormTemplate else success"> </ng-container>
+    <ng-template #bookFormTemplate>
+        <form class="form row" autocomplete="off" [formGroup]="bookForm" (ngSubmit)="onSubmit()">
+            <div class="col-sm-6 col-md-4 mb-1">
+                <h2>Valid {{bookForm.valid}}</h2>
+                <h2>status {{bookForm.status}}</h2>
+                <h2>err {{bookForm.errors}}</h2>
+                <mat-form-field class="w-100" appearance="fill">
+                    <mat-label>Nombre</mat-label>
+                    <input name="name" matInput formControlName="name">
+                    <mat-error *ngIf="isValidInput('name')">{{getInputError('name')}}</mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-6 col-md-4 mb-1">
+                <mat-form-field class="w-100" appearance="fill">
+                    <mat-label>Apellidos</mat-label>
+                    <input name="lastName" matInput formControlName="lastName">
+                    <mat-error *ngIf="isValidInput('lastName')">{{getInputError('lastName')}}</mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-6 col-md-4 mb-1">
+                <mat-form-field class="w-100" appearance="fill">
+                    <mat-label>Estado Civil</mat-label>
+                    <mat-select>
+                        <mat-option *ngFor="let maritalStatus of maritalStatuses" [value]="maritalStatus.value">
+                            {{maritalStatus.label}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-6 col-md-4 mb-1">
+                <mat-form-field class="w-100" appearance="fill">
+                    <mat-label>¿Eres fumador?</mat-label>
+                    <mat-select formControlName="isSmoker">
+                        <mat-option [value]="true">Si</mat-option>
+                        <mat-option [value]="false">No</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="isValidInput('isSmoker')">El campo es
+                        obligatorio</mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-12 col-md-8 mb-1">
+                <mat-form-field class="w-100" appearance="fill">
+                    <mat-label>¿Actualmente practicas lectura?</mat-label>
+                    <mat-select [(value)]="isReader" formControlName="isReader">
+                        <mat-option [value]="true" (click)="onAddBook()">Si</mat-option>
+                        <mat-option [value]="false" selected (click)="purgeBooks()">No</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="isValidInput('isReader')">El campo es
+                        obligatorio</mat-error>
+                </mat-form-field>
+            </div>
+            <ng-container *ngIf="isReader">
+                <div class="col-12">
+                    <p>Añade los libros leídos en los últimos 3 meses.</p>
+                </div>
+                <div *ngFor="let book of books.controls; let i = index" class="col-12 col-md-6 mb-1"
+                    formArrayName="books">
+                    <mat-form-field class="w-100" appearance="fill">
+                        <mat-label>Libro</mat-label>
+                        <input [formControlName]="i" placeholder="Título" matInput>
+                        <button *ngIf="i !== 0 || books.controls.length > 1 " color="warn" mat-icon-button matSuffix
+                            [attr.aria-label]="'Eliminar Libro'" (click)="onDeleteBook(i)">
+                            <mat-icon>cancel</mat-icon>
+                        </button>
+                    </mat-form-field>
+                    <mat-error *ngIf="isValidArrayInput(books,i)">El campo es requerido</mat-error>
+                </div>
+                <div class="col-4 mb-1">
+                    <button class="mat-ies-blue" (click)="onAddBook()" mat-raised-button>Añadir libro</button>
+                </div>
+            </ng-container>
+            <div class="col-12 text-right">
+                <button class="mat-ies-orange" (click)="onSubmit()" mat-raised-button>Enviar</button>
+            </div>
+        </form>
+    </ng-template>
+    <ng-template #success>
+        <p #success>Grtacias {{name}}, el formulario se envió con éxito</p>
+    </ng-template>
 </app-layout>
-
-<ng-template #reader>
-    <div class="col-12">
-        <p>Añade los libros leídos en los últimos 3 meses.</p>
-    </div>
-    <div class="form-group col-6">
-        <mat-form-field class="w-100" appearance="fill" floatLabel="auto">
-            <mat-label>Libro</mat-label>
-            <input matInput>
-            <button class="mat-ies-blue-icon" mat-icon-button matSuffix [attr.aria-label]="'Añade Libro'">
-                <mat-icon>add_circle</mat-icon>
-            </button>
-        </mat-form-field>
-    </div>
-</ng-template>
