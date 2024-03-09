@@ -1,4 +1,4 @@
-import { Pipe, PipeTransform } from '@angular/core';
+import { NgModule, Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
   name: 'cambioLetras'
@@ -20,3 +20,10 @@ export class CambioLetrasPipe implements PipeTransform {
     return value.replace(/[aeiou]/gi, match => this.letterMap[match.toLowerCase()] || match);
   }
 }
+
+
+@NgModule({
+  declarations: [CambioLetrasPipe],
+  exports: [CambioLetrasPipe],
+})
+export class CambioLetrasPipeModule { }
