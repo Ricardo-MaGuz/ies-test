@@ -3,12 +3,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
-import { StoreModule } from '@ngrx/store';
 import { AppComponent } from './app.component';
-import { EffectsModule } from '@ngrx/effects';
-import { authReducer } from './shared/data-access/store/auth/auth.reducer';
+import { MatNativeDateModule } from '@angular/material/core';
 
-import { NameDialogComponent } from './shared/ui/name-dialog/name-dialog.component';
+
 
 
 @NgModule({
@@ -19,8 +17,8 @@ import { NameDialogComponent } from './shared/ui/name-dialog/name-dialog.compone
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    StoreModule.forRoot({}, {}),
-    EffectsModule.forRoot([]),
+    MatNativeDateModule,
+
 
 
   ],

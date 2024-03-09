@@ -13,7 +13,7 @@ const routes: Routes = [
       import('./pages/feature/pages.module').then((m) => m.PagesModule),
   },
   {
-    path: '',
+    path: '**',
     redirectTo: 'login',
     pathMatch: 'full',
   },];

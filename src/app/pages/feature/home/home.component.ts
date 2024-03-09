@@ -22,9 +22,6 @@ export class HomeComponent implements OnInit {
     nameDialog.afterClosed().subscribe((res) => {
       this.name = res.name
       this.isNamed = true
-      console.log(res.name)
-      // Data back from dialog
-      console.log({ res });
     });
   }
 
