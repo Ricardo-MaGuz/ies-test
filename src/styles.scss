@@ -2,7 +2,12 @@
 
 body {
     background-color: $mat-ies-blue;
-    overflow: hidden;
+}
+
+.home {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1443890923422-7819ed4101c0?fm=jpg');
+    background-size: cover;
+    background-attachment: fixed;
 }
 
 .mat-ies-orange {

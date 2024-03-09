@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { PagesComponent } from './pages.component';
 import { PagesoutingModule } from './pages-routing.module';
 import { NavModule } from 'src/app/shared/ui/nav/nav.module';
+import { ReactiveFormsModule } from '@angular/forms';
+
 import { MatButtonModule } from '@angular/material/button';
 import { HomeComponent } from './home/home.component';
 import { ConversionsComponent } from './conversions/conversions.component';
@@ -47,7 +49,8 @@ import { MatIconModule } from '@angular/material/icon';
     MatSelectModule,
     MatRadioModule,
     MatDatepickerModule,
-    CambioLetrasPipeModule
+    CambioLetrasPipeModule,
+    ReactiveFormsModule
   ],
 })
 export class PagesModule { }
