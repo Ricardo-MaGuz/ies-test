@@ -1,4 +1,4 @@
-@import "assets/scss/variables";
+@import "scss/variables";
 
 body {
     background-color: $mat-ies-blue;
@@ -28,4 +28,22 @@ body {
     background-color: $mat-ies-orange-disabled;
     color: $white;
     color: rgba(0, 0, 0, .26);
+}
+
+.warn {
+    background-color: $warn;
+    color: $white;
+
+    .mat-button-wrapper {
+        color: $white;
+    }
+}
+
+.success {
+    background-color: $success;
+    color: $white;
+
+    .mat-button-wrapper {
+        color: $white;
+    }
 }
