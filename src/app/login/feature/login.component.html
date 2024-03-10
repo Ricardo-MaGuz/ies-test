@@ -1,25 +1,31 @@
+<app-loader></app-loader>
 <div class="container">
     <div class="row justify-content-center pt-5">
         <mat-card class="card col-10 col-lg-6 py-4 ">
             <div class="p-2">
                 <mat-card-title class="mb-4">Login</mat-card-title>
-                <form>
+                <form [formGroup]="loginForm" (ngSubmit)="login()">
                     <div class="form-group">
                         <mat-form-field class="w-100" :appearance="fill" floatLabel="auto">
-                            <mat-label>Username</mat-label>
+                            <mat-label>Email</mat-label>
                             <mat-icon matSuffix>account_circle</mat-icon>
-                            <input matInput>
+                            <input matInput formControlName="email" type="email">
+                            <mat-error *ngIf="isValidInput('email')">El campo es
+                                obligatorio</mat-error>
                         </mat-form-field>
                     </div>
                     <div class="form-group">
                         <mat-form-field class="w-100" appearance="fill" floatLabel="auto">
                             <mat-icon matSuffix>key</mat-icon>
                             <mat-label>Password</mat-label>
-                            <input matInput>
+                            <input type="password" matInput formControlName="password">
+                            <mat-error *ngIf="isValidInput('password')">El campo es
+                                obligatorio</mat-error>
                         </mat-form-field>
                     </div>
 
-                    <button class="mat-ies-orange" mat-raised-button>Submit</button>
+                    <button class="mat-ies-orange" type="submit" [disabled]="loginForm.invalid"
+                        mat-raised-button>Submit</button>
                 </form>
             </div>
         </mat-card>
