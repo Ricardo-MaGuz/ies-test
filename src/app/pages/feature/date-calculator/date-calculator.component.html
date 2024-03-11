@@ -1,36 +1,44 @@
 <app-layout [title]="'Date Calculator'">
     <p>Suma la unidad de tiempo deseada a la fecha elegida</p>
     <form class="form row">
-        <div class="form-group col-6 col-lg-4">
+        <div class="col-6 col-lg-4 mb-1">
             <mat-form-field class="w-100" appearance="fill">
                 <mat-label>Choose a date</mat-label>
-                <input matInput [matDatepicker]="picker">
+                <input name="initial Date" matInput [matDatepicker]="picker" [(ngModel)]="selectedDate" required="">
                 <mat-hint>DD/MM/YYYY</mat-hint>
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
+                <mat-error>El campo es requerido</mat-error>
             </mat-form-field>
         </div>
-        <div class="form-group col-6 col-lg-4">
+        <div class="col-6 col-lg-4 mb-1">
             <mat-form-field class="w-100" appearance="fill">
                 <mat-label>Unidad de tiempo</mat-label>
-                <mat-select>
-                    <mat-option value="one">Día</mat-option>
-                    <mat-option value="two">Mes</mat-option>
-                    <mat-option value="two">Año</mat-option>
+                <mat-select name="Time Frame" [(ngModel)]="selectedUnit" required="">
+                    <mat-option value=1>Día</mat-option>
+                    <mat-option value=30>Mes</mat-option>
+                    <mat-option value=365>Año</mat-option>
                 </mat-select>
+                <mat-error>El campo es requerido</mat-error>
             </mat-form-field>
         </div>
-        <div class="form-group col-6 col-lg-4">
+        <div class="col-6 col-lg-4 mb-1">
             <mat-form-field class="w-100" appearance="fill" floatLabel="auto">
                 <mat-label>Cantidad de tiempo</mat-label>
-                <input matInput>
+                <input type="number" name="amount" matInput [(ngModel)]="amount" required="">
+                <mat-error>El campo es requerido</mat-error>
             </mat-form-field>
         </div>
+        <div class="col-6 col-lg-4">
+            <button class="mat-ies-orange" type="submit" (click)="calculateDate()" mat-raised-button
+                [disabled]="canSend">Calcular
+                fecha</button>
+        </div>
     </form>
-    <section class="text-center mb-5">
+    <section *ngIf="resultDate" class="text-center mb-5">
         <h2 class="mb-4">El resultado es:</h2>
         <div class="position-relative date-wrapper">
-            <p class="result-date font-weight-bold">03/03/2023</p>
+            <p class="result-date font-weight-bold">{{ resultDate | date:'dd MMM yyyy' }}</p>
         </div>
 
     </section>
