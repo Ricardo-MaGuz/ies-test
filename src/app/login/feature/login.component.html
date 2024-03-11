@@ -1,10 +1,15 @@
-<app-loader></app-loader>
+<app-loader *ngIf="loading"></app-loader>
 <div class="container">
     <div class="row justify-content-center pt-5">
         <mat-card class="card col-10 col-lg-6 py-4 ">
             <div class="p-2">
                 <mat-card-title class="mb-4">Login</mat-card-title>
-                <form [formGroup]="loginForm" (ngSubmit)="login()">
+                <div *ngIf="isAuth == true" class="justify-content-start">
+                    <p>Tu sesión está activa.</p>
+                    <button class="mat-ies-blue" type="button" mat-raised-button (click)="logout()">Cerrar
+                        Sesión</button>
+                </div>
+                <form *ngIf="!isAuth" [formGroup]="loginForm" (ngSubmit)="login()">
                     <div class="form-group">
                         <mat-form-field class="w-100" :appearance="fill" floatLabel="auto">
                             <mat-label>Email</mat-label>
