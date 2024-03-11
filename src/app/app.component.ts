@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { AuthService } from './shared/data-access/auth/services/auth.service';
+
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'ies-test';
+  constructor(private authService: AuthService) {
+    this.authService.initAuthListener()
+  }
+
 }

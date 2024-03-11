@@ -13,14 +13,14 @@ import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/materia
 
 import { AngularFireModule } from '@angular/fire/compat'
 import { AngularFireAuthModule } from '@angular/fire/compat/auth'
-import { AngularFirestoreModule } from '@angular/fire/compat/firestore'
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { StoreModule } from '@ngrx/store';
-import { EffectsModule } from '@ngrx/effects';
 
 
 import { AppComponent } from './app.component';
 import { environment } from 'src/environments/environment';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { appReducers } from './app.reducer';
 
 
 @NgModule({
@@ -35,7 +35,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFirestoreModule,
-    MatSnackBarModule
+    StoreModule.forRoot(appReducers),
+    MatSnackBarModule,
   ],
   providers: [{ provide: MAT_DATE_LOCALE, useValue: 'en-us' }, {
     provide: DateAdapter,
