@@ -9,6 +9,10 @@ import { MatInputModule } from '@angular/material/input';
 
 import { LoginRoutingModule } from './login-routing.module';
 import { LoginComponent } from './login.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { LoaderModule } from 'src/app/shared/ui/loader/loader.module';
 
 
 @NgModule({
@@ -16,12 +20,17 @@ import { LoginComponent } from './login.component';
     LoginComponent
   ],
   imports: [
+    CommonModule,
     LoginRoutingModule,
+    ReactiveFormsModule,
     MatCardModule,
     MatButtonModule,
     MatIconModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatSnackBarModule,
+    LoaderModule
+
   ]
 })
 export class LoginModule { }

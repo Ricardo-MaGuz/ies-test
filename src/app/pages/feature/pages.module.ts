@@ -14,13 +14,14 @@ import { NameDialogModule } from 'src/app/shared/ui/name-dialog/name-dialog.modu
 import { LayoutComponent } from '../shared/ui/layout/layout.component';
 import { MatCardModule } from '@angular/material/card';
 import { DateCalculatorComponent } from './date-calculator/date-calculator.component';
-import { CambioLetrasPipeModule } from 'src/app/shared/pipes/cambio-letras/cambio-letras.pipe';
+import { CambioLetrasPipeModule } from 'src/app/shared/utils/pipes/cambio-letras/cambio-letras.pipe';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatIconModule } from '@angular/material/icon';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 
@@ -49,6 +50,7 @@ import { MatIconModule } from '@angular/material/icon';
     MatSelectModule,
     MatRadioModule,
     MatDatepickerModule,
+    MatSnackBarModule,
     CambioLetrasPipeModule,
     ReactiveFormsModule
   ],

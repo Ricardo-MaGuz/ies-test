@@ -3,9 +3,6 @@
     <ng-template #bookFormTemplate>
         <form class="form row" autocomplete="off" [formGroup]="bookForm" (ngSubmit)="onSubmit()">
             <div class="col-sm-6 col-md-4 mb-1">
-                <h2>Valid {{bookForm.valid}}</h2>
-                <h2>status {{bookForm.status}}</h2>
-                <h2>err {{bookForm.errors}}</h2>
                 <mat-form-field class="w-100" appearance="fill">
                     <mat-label>Nombre</mat-label>
                     <input name="name" matInput formControlName="name">
@@ -23,8 +20,9 @@
                 <mat-form-field class="w-100" appearance="fill">
                     <mat-label>Estado Civil</mat-label>
                     <mat-select>
-                        <mat-option *ngFor="let maritalStatus of maritalStatuses" [value]="maritalStatus.value">
-                            {{maritalStatus.label}}
+                        <mat-option *ngFor="let maritalStatus of maritalStatuses | keyvalue"
+                            [value]="maritalStatus.key">
+                            {{maritalStatus.value}}
                         </mat-option>
                     </mat-select>
                 </mat-form-field>
@@ -68,11 +66,12 @@
                     <mat-error *ngIf="isValidArrayInput(books,i)">El campo es requerido</mat-error>
                 </div>
                 <div class="col-4 mb-1">
-                    <button class="mat-ies-blue" (click)="onAddBook()" mat-raised-button>Añadir libro</button>
+                    <button type="button" class="mat-ies-blue" (click)="onAddBook()" mat-raised-button>Añadir
+                        libro</button>
                 </div>
             </ng-container>
             <div class="col-12 text-right">
-                <button class="mat-ies-orange" (click)="onSubmit()" mat-raised-button>Enviar</button>
+                <button type="submit" class="mat-ies-orange" mat-raised-button>Enviar</button>
             </div>
         </form>
     </ng-template>
