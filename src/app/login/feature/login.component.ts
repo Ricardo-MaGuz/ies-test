@@ -55,22 +55,22 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   login() {
     if (this.loginForm.invalid) return
-
     this.store.dispatch(ui.isLoading())
     const { email, password } = this.loginForm.value
-    //this.loading = false;
-
     this.authService.login(email, password).then(() => [
       this.store.dispatch(ui.stopLoading()),
       this.router.navigate(['/', 'pages'])
     ]
 
     )
-      .catch((err: any) => this._snackBar.open(err, 'Cerrar', {
-        horizontalPosition: 'center',
-        verticalPosition: 'top',
-        panelClass: 'warn'
-      }))
+      .catch((err: any) => {
+        this.store.dispatch(ui.stopLoading()),
+          this._snackBar.open(err, 'Cerrar', {
+            horizontalPosition: 'center',
+            verticalPosition: 'top',
+            panelClass: 'warn'
+          })
+      })
   }
 
   logout() {

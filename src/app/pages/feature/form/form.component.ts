@@ -115,7 +115,7 @@ export class FormComponent implements OnInit {
     this.name = this.bookForm.controls['name'].value
     console.log(JSON.stringify(this.bookForm.value));
     this.bookForm.reset()
-    this._snackBar.open(`Gracias %{this.name}, el formulario fue enviado.`, 'Cerrar', {
+    this._snackBar.open(`Gracias ${this.name}, el formulario fue enviado.`, 'Cerrar', {
       horizontalPosition: 'center',
       verticalPosition: 'top', panelClass: 'success'
     });
